@@ -1,6 +1,6 @@
-package pl.javastart.restassured.main.pojo;
+package pl.javastart.restassured.main.pojo.pet;
 
-public class Tag {
+public class Category {
 
     private Integer id;
     private String name;

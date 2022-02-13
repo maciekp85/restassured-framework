@@ -1,4 +1,4 @@
-package pl.javastart.restassured.main.pojo;
+package pl.javastart.restassured.main.pojo.pet;
 
 import java.util.List;
 

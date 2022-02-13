@@ -1,31 +1,17 @@
 package pl.javastart.restassured.tests.pet;
 
-import io.restassured.RestAssured;
-import io.restassured.filter.log.RequestLoggingFilter;
-import io.restassured.filter.log.ResponseLoggingFilter;
-import org.aeonbits.owner.ConfigFactory;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pl.javastart.restassured.main.pojo.Category;
-import pl.javastart.restassured.main.pojo.Pet;
-import pl.javastart.restassured.main.pojo.Tag;
-import pl.javastart.restassured.main.properties.EnvironmentConfig;
+import pl.javastart.restassured.main.pojo.pet.Category;
+import pl.javastart.restassured.main.pojo.pet.Pet;
+import pl.javastart.restassured.main.pojo.pet.Tag;
+import pl.javastart.restassured.tests.testbases.SuiteTestBase;
 
 import java.util.Collections;
 
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
-public class CreatePetTests {
-
-    @BeforeMethod
-    public void setupConfiguration() {
-        EnvironmentConfig environmentConfig = ConfigFactory.create(EnvironmentConfig.class);
-
-        RestAssured.baseURI = environmentConfig.baseUri();
-        RestAssured.basePath = environmentConfig.basePath();
-        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
-    }
+public class CreatePetTests extends SuiteTestBase {
 
     @Test
     public void givenPetWhenPostPetThenPetIsCreatedTest() {
