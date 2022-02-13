@@ -3,11 +3,13 @@ package pl.javastart.restassured.tests.pet;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
+import org.aeonbits.owner.ConfigFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pl.javastart.main.pojo.Category;
-import pl.javastart.main.pojo.Pet;
-import pl.javastart.main.pojo.Tag;
+import pl.javastart.restassured.main.pojo.Category;
+import pl.javastart.restassured.main.pojo.Pet;
+import pl.javastart.restassured.main.pojo.Tag;
+import pl.javastart.restassured.main.properties.EnvironmentConfig;
 
 import java.util.Collections;
 
@@ -18,8 +20,10 @@ public class CreatePetTests {
 
     @BeforeMethod
     public void setupConfiguration() {
-        RestAssured.baseURI = "https://swaggerpetstore.przyklady.javastart.pl";
-        RestAssured.basePath = "v2";
+        EnvironmentConfig environmentConfig = ConfigFactory.create(EnvironmentConfig.class);
+
+        RestAssured.baseURI = environmentConfig.baseUri();
+        RestAssured.basePath = environmentConfig.basePath();
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
     }
 
