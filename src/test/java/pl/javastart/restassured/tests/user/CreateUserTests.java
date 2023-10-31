@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import pl.javastart.restassured.main.pojo.ApiResponse;
 import pl.javastart.restassured.main.pojo.user.User;
 import pl.javastart.restassured.main.request.configuration.RequestConfigurationBuilder;
+import pl.javastart.restassured.main.rop.CreateUserEndpoint;
 import pl.javastart.restassured.main.test.data.UserTestDataGenerator;
 import pl.javastart.restassured.tests.testbases.SuiteTestBase;
 
@@ -21,10 +22,7 @@ public class CreateUserTests extends SuiteTestBase {
         UserTestDataGenerator userTestDataGenerator = new UserTestDataGenerator(); // Create generator
         user = userTestDataGenerator.generateUser(); // Generate User object
 
-        ApiResponse apiResponse = given().spec(RequestConfigurationBuilder.getDefaultRequestSpecification())
-                .body(user)
-                .when().post("user")
-                .then().statusCode(HttpStatus.SC_OK).extract().as(ApiResponse.class);
+        ApiResponse apiResponse = new CreateUserEndpoint().setUser(user).sendRequest().assertRequestSuccess().getResponseModel();
 
         ApiResponse expectedApiResponse = new ApiResponse();
         expectedApiResponse.setCode(HttpStatus.SC_OK);
