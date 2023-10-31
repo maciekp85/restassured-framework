@@ -44,6 +44,24 @@
             <artifactId>assertj-core</artifactId>
             <version>3.24.2</version>
         </dependency>
+        <!--Biblioteka Allure do integracji z TestNG-->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.24.0</version>
+        </dependency>
+        <!--Biblioteka Allure do integracji z REST Assured-->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-rest-assured</artifactId>
+            <version>2.24.0</version>
+        </dependency>
+        <!--Biblioteka slf4j do poprawnego działania Allura-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.9</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -53,10 +71,24 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>src\test\resources\smoke_suite.xml</suiteXmlFile>
-                    </suiteXmlFiles>
+                    <!--Konfiguracja Allura ze ścieżką do biblioteki aspectjweaver-->
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.5/aspectjweaver-1.9.5.jar"
+                    </argLine>
+                    <!--Nowy parametr określający gdzie maven-surefire-plugin ma zapisywać wyniki z testów-->
+                    <systemPropertyVariables>
+                        <allure.results.directory>${basedir}/target/allure-results</allure.results.directory>
+                    </systemPropertyVariables>
                 </configuration>
+                <!--Dodanie dodatkowych zależności do maven-surefire-plugin w postaci biblioteki aspectjweaver-->
+                <!--Sekcja ta określa zależności dla danego pluginu-->
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>1.9.5</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -67,6 +99,11 @@
                     <source>17</source>
                     <target>17</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.12.0</version>
             </plugin>
         </plugins>
     </build>
