@@ -2,9 +2,8 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Smoke Test Suite">
     <test name="API tests for Petstore">
-        <classes>
-            <class name="pl.javastart.restassured.tests.pet.CreatePetTests"/>
-            <class name="pl.javastart.restassured.tests.user.CreateUserTests"/>
-        </classes>
+        <packages>
+            <package name="pl.javastart.restassured.tests.*"/>
+        </packages>
     </test>
 </suite>
