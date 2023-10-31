@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import pl.javastart.restassured.main.pojo.ApiResponse;
 import pl.javastart.restassured.main.pojo.pet.Pet;
 import pl.javastart.restassured.main.request.configuration.RequestConfigurationBuilder;
+import pl.javastart.restassured.main.rop.CreatePetEndpoint;
 import pl.javastart.restassured.main.test.data.PetTestDataGenerator;
 import pl.javastart.restassured.tests.testbases.SuiteTestBase;
 
@@ -21,9 +22,7 @@ public class CreatePetTests extends SuiteTestBase {
 
         Pet pet = new PetTestDataGenerator().generatePet();
 
-        actualPet = given().spec(RequestConfigurationBuilder.getDefaultRequestSpecification()).body(pet)
-                .when().post("pet")
-                .then().statusCode(HttpStatus.SC_OK).extract().as(Pet.class);
+        actualPet = new CreatePetEndpoint().setPet(pet).sendRequest().assertRequestSuccess().getResponseModel();
 
         Assertions.assertThat(actualPet).describedAs("Send Pet was different than received by API").usingRecursiveComparison().isEqualTo(pet);
     }
