@@ -9,7 +9,6 @@ import pl.javastart.restassured.main.test.data.PetTestDataGenerator;
 import pl.javastart.restassured.tests.testbases.SuiteTestBase;
 
 import static io.restassured.RestAssured.given;
-import static org.testng.Assert.assertEquals;
 
 public class CreatePetTests extends SuiteTestBase {
 
