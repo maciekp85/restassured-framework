@@ -1,5 +1,9 @@
 package pl.javastart.restassured.tests.pet;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.TmsLink;
 import org.apache.http.HttpStatus;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.AfterMethod;
@@ -15,6 +19,10 @@ public class CreatePetTests extends SuiteTestBase {
 
     private Pet actualPet;
 
+    @Issue("DEFECT-1")
+    @TmsLink("ID-1")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("The goal of this test is to create pet and check if returned Pet object is the same")
     @Test
     public void givenPetWhenPostPetThenPetIsCreatedTest() {
 

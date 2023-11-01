@@ -104,6 +104,9 @@
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
                 <version>2.12.0</version>
+                <configuration>
+                    <propertiesFilePath>${basedir}/src/main/resources/allure.properties</propertiesFilePath>
+                </configuration>
             </plugin>
         </plugins>
     </build>
