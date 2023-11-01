@@ -7,8 +7,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import pl.javastart.restassured.main.pojo.ApiResponse;
 import pl.javastart.restassured.main.pojo.user.User;
-import pl.javastart.restassured.main.rop.CreateUserEndpoint;
-import pl.javastart.restassured.main.rop.DeleteUserEndpoint;
+import pl.javastart.restassured.main.rop.user.CreateUserEndpoint;
+import pl.javastart.restassured.main.rop.user.DeleteUserEndpoint;
 import pl.javastart.restassured.main.test.data.UserTestDataGenerator;
 import pl.javastart.restassured.tests.testbases.SuiteTestBase;
 

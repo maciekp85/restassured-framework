@@ -1,17 +1,17 @@
-package pl.javastart.restassured.main.rop;
+package pl.javastart.restassured.main.rop.user;
 
 import org.apache.http.HttpStatus;
 import pl.javastart.restassured.main.pojo.ApiResponse;
-import pl.javastart.restassured.main.pojo.user.User;
 import pl.javastart.restassured.main.request.configuration.RequestConfigurationBuilder;
+import pl.javastart.restassured.main.rop.BaseEndpoint;
 
 import java.lang.reflect.Type;
 
 import static io.restassured.RestAssured.given;
 
-public class CreateUserEndpoint extends BaseEndpoint<CreateUserEndpoint, ApiResponse> {
+public class DeleteUserEndpoint extends BaseEndpoint<DeleteUserEndpoint, ApiResponse> {
 
-    private User user;
+    private String username;
 
     @Override
     protected Type getModelType() {
@@ -19,9 +19,9 @@ public class CreateUserEndpoint extends BaseEndpoint<CreateUserEndpoint, ApiResp
     }
 
     @Override
-    public CreateUserEndpoint sendRequest() {
-        response = given().spec(RequestConfigurationBuilder.getDefaultRequestSpecification()).body(user)
-                .when().post("user");
+    public DeleteUserEndpoint sendRequest() {
+        response = given().spec(RequestConfigurationBuilder.getDefaultRequestSpecification())
+                .when().delete("user/{username}", username);
         return this;
     }
 
@@ -30,8 +30,8 @@ public class CreateUserEndpoint extends BaseEndpoint<CreateUserEndpoint, ApiResp
         return HttpStatus.SC_OK;
     }
 
-    public CreateUserEndpoint setUser(User user) {
-        this.user = user;
+    public DeleteUserEndpoint setUsername(String username) {
+        this.username = username;
         return this;
     }
 }

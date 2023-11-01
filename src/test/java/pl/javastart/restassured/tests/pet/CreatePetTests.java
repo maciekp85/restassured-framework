@@ -7,8 +7,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import pl.javastart.restassured.main.pojo.ApiResponse;
 import pl.javastart.restassured.main.pojo.pet.Pet;
-import pl.javastart.restassured.main.rop.CreatePetEndpoint;
-import pl.javastart.restassured.main.rop.DeletePetEndpoint;
+import pl.javastart.restassured.main.rop.pet.CreatePetEndpoint;
+import pl.javastart.restassured.main.rop.pet.DeletePetEndpoint;
 import pl.javastart.restassured.main.test.data.PetTestDataGenerator;
 import pl.javastart.restassured.tests.testbases.SuiteTestBase;
 

@@ -1,8 +1,9 @@
-package pl.javastart.restassured.main.rop;
+package pl.javastart.restassured.main.rop.pet;
 
 import org.apache.http.HttpStatus;
 import pl.javastart.restassured.main.pojo.pet.Pet;
 import pl.javastart.restassured.main.request.configuration.RequestConfigurationBuilder;
+import pl.javastart.restassured.main.rop.BaseEndpoint;
 
 import java.lang.reflect.Type;
 

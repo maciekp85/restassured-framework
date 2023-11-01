@@ -1,26 +1,27 @@
-package pl.javastart.restassured.main.rop;
+package pl.javastart.restassured.main.rop.pet;
 
 import org.apache.http.HttpStatus;
-import pl.javastart.restassured.main.pojo.ApiResponse;
+import pl.javastart.restassured.main.pojo.pet.Pet;
 import pl.javastart.restassured.main.request.configuration.RequestConfigurationBuilder;
+import pl.javastart.restassured.main.rop.BaseEndpoint;
 
 import java.lang.reflect.Type;
 
 import static io.restassured.RestAssured.given;
 
-public class DeletePetEndpoint extends BaseEndpoint<DeletePetEndpoint, ApiResponse> {
+public class GetPetEndpoint extends BaseEndpoint<GetPetEndpoint, Pet> {
 
     private Integer petId;
 
     @Override
     protected Type getModelType() {
-        return ApiResponse.class;
+        return Pet.class;
     }
 
     @Override
-    public DeletePetEndpoint sendRequest() {
+    public GetPetEndpoint sendRequest() {
         response = given().spec(RequestConfigurationBuilder.getDefaultRequestSpecification())
-                .when().delete("pet/{petId}", petId);
+                .when().get("pet/{petId}", petId);
         return this;
     }
 
@@ -29,7 +30,7 @@ public class DeletePetEndpoint extends BaseEndpoint<DeletePetEndpoint, ApiRespon
         return HttpStatus.SC_OK;
     }
 
-    public DeletePetEndpoint setPetId(Integer petId) {
+    public GetPetEndpoint setPetId(Integer petId) {
         this.petId = petId;
         return this;
     }

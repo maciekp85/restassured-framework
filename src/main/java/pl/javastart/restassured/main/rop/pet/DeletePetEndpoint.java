@@ -1,16 +1,17 @@
-package pl.javastart.restassured.main.rop;
+package pl.javastart.restassured.main.rop.pet;
 
 import org.apache.http.HttpStatus;
 import pl.javastart.restassured.main.pojo.ApiResponse;
 import pl.javastart.restassured.main.request.configuration.RequestConfigurationBuilder;
+import pl.javastart.restassured.main.rop.BaseEndpoint;
 
 import java.lang.reflect.Type;
 
 import static io.restassured.RestAssured.given;
 
-public class DeleteUserEndpoint extends BaseEndpoint<DeleteUserEndpoint, ApiResponse> {
+public class DeletePetEndpoint extends BaseEndpoint<DeletePetEndpoint, ApiResponse> {
 
-    private String username;
+    private Integer petId;
 
     @Override
     protected Type getModelType() {
@@ -18,9 +19,9 @@ public class DeleteUserEndpoint extends BaseEndpoint<DeleteUserEndpoint, ApiResp
     }
 
     @Override
-    public DeleteUserEndpoint sendRequest() {
+    public DeletePetEndpoint sendRequest() {
         response = given().spec(RequestConfigurationBuilder.getDefaultRequestSpecification())
-                .when().delete("user/{username}", username);
+                .when().delete("pet/{petId}", petId);
         return this;
     }
 
@@ -29,8 +30,8 @@ public class DeleteUserEndpoint extends BaseEndpoint<DeleteUserEndpoint, ApiResp
         return HttpStatus.SC_OK;
     }
 
-    public DeleteUserEndpoint setUsername(String username) {
-        this.username = username;
+    public DeletePetEndpoint setPetId(Integer petId) {
+        this.petId = petId;
         return this;
     }
 }
