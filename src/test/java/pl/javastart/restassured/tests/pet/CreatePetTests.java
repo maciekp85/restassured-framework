@@ -1,9 +1,6 @@
 package pl.javastart.restassured.tests.pet;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.TmsLink;
+import io.qameta.allure.*;
 import org.apache.http.HttpStatus;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.AfterMethod;
